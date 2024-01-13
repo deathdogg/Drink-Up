@@ -1,24 +1,15 @@
-//
-//  ContentView.swift
-//  Drink Up
-//
-//  Created by Ricardo Herrera on 1/12/24.
-//
-
+import Foundation
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
-
-#Preview {
-    ContentView()
+	@State var path = NavigationPath()
+	var body: some View {
+		NavigationStack {
+			MainScreen(path: $path)
+				.navigationDestination(for: BrewPackage.self) {
+					package in
+					PackageDetails(package: package)
+				}
+		}
+	}
 }
