@@ -28,6 +28,7 @@
 		C51F2AD32B6315EC0055CAF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C51F2AD62B6315EC0055CAF2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C51F2AD82B6315EC0055CAF2 /* drink_up.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = drink_up.entitlements; sourceTree = "<group>"; };
+		C52816482B6580B000E8CE79 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +65,7 @@
 		C51F2AC32B6315EA0055CAF2 = {
 			isa = PBXGroup;
 			children = (
+				C52816482B6580B000E8CE79 /* readme.md */,
 				C51F2ACE2B6315EA0055CAF2 /* drink-up */,
 				C51F2ACD2B6315EA0055CAF2 /* Products */,
 			);
