@@ -6,6 +6,7 @@ struct MainScreen: View {
 	@State var packages: [BrewPackage] = []
 	@State var filteredPackages: [BrewPackage] = []
 	@State var searchText: String = ""
+	@State var installedPackages: [String] = []
 	var body: some View {
 		VStack {
 			TextField("Search", text: $searchText)
@@ -25,6 +26,14 @@ struct MainScreen: View {
 				.onChange(of: searchText) {
 					searching()
 				}
+			}
+			// Display list of installed packages
+			List(installedPackages, id: \.self) {
+				p in
+				Text(p)
+			}
+			.onAppear {
+				self.installedPackages = LocalInstalls.getInstalledFormulae()
 			}
 		}
 	}
