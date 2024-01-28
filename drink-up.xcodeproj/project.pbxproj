@@ -15,6 +15,8 @@
 		C51F2AD22B6315EA0055CAF2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F2AD12B6315EA0055CAF2 /* ContentView.swift */; };
 		C51F2AD42B6315EC0055CAF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C51F2AD32B6315EC0055CAF2 /* Assets.xcassets */; };
 		C51F2AD72B6315EC0055CAF2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C51F2AD62B6315EC0055CAF2 /* Preview Assets.xcassets */; };
+		C5B09AD22B66833C00C3AEE4 /* InstalledPackages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B09AD12B66833C00C3AEE4 /* InstalledPackages.swift */; };
+		C5B09AD42B66835400C3AEE4 /* DatabasePackages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B09AD32B66835400C3AEE4 /* DatabasePackages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		C51F2AD62B6315EC0055CAF2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C51F2AD82B6315EC0055CAF2 /* drink_up.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = drink_up.entitlements; sourceTree = "<group>"; };
 		C52816482B6580B000E8CE79 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		C5B09AD12B66833C00C3AEE4 /* InstalledPackages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstalledPackages.swift; sourceTree = "<group>"; };
+		C5B09AD32B66835400C3AEE4 /* DatabasePackages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePackages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 			children = (
 				C50F8E8B2B63172800BCE42F /* BrewJsonStructs.swift */,
 				C50F8E8C2B63172800BCE42F /* brew.json */,
+				C5B09AD12B66833C00C3AEE4 /* InstalledPackages.swift */,
+				C5B09AD32B66835400C3AEE4 /* DatabasePackages.swift */,
 			);
 			name = PackageManagement;
 			path = "drink-up/PackageManagement";
@@ -172,7 +178,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C50F8E882B63171800BCE42F /* MainScreen.swift in Sources */,
+				C5B09AD22B66833C00C3AEE4 /* InstalledPackages.swift in Sources */,
 				C50F8E892B63171800BCE42F /* PackageDetails.swift in Sources */,
+				C5B09AD42B66835400C3AEE4 /* DatabasePackages.swift in Sources */,
 				C51F2AD22B6315EA0055CAF2 /* ContentView.swift in Sources */,
 				C51F2AD02B6315EA0055CAF2 /* drink_upApp.swift in Sources */,
 				C50F8E8D2B63172800BCE42F /* BrewJsonStructs.swift in Sources */,

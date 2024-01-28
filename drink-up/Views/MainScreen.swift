@@ -3,78 +3,42 @@ import SwiftUI
 
 struct MainScreen: View {
 	@Binding var path: NavigationPath
-	@State var databasePackages: [BrewPackage] = []
-	@State var databasePackagesSelection = Set<BrewPackage>()
-	@State var filteredPackages: [BrewPackage] = []
-	@State var searchText: String = ""
-	@State var installedPackages: [String] = []
-	@State var installedPackagesSelection = Set<String>()
-	@State var output = ""
-	@State var errorOutput = ""
+@State private var vm = VM()
 	var body: some View {
 		VStack {
 			Group {
-				ForEach(output.split(separator: "\n"), id: \.self) {
+				ForEach(vm.output.split(separator: "\n"), id: \.self) {
 					Text($0)
 				}
 			}
-			TextField("Search", text: $searchText)
-			Text("\(self.databasePackages.count) packages")
-			Button("Load packages") {
-				print("Loading Packages")
-				Task {
-					await self.loadData()
-				}
-			}
 			// Display a list of packages
-			List(selection: $databasePackagesSelection) {
-				ForEach(filteredPackages, id: \.self) {
-					package in
-					NavigationLink(package.name, value: package)
-						.accessibilityAddTraits(.isStaticText)
-				}
-				.onChange(of: searchText) {
-					self.searching()
-				}
-			}
+			DatabasePackages(databasePackagesSelection: vm.databasePackagesSelection)
 			.toolbar { Button("Install") {
-				self.installPackages()
+				vm.installPackages()
 			} }
 			// Display list of installed packages
-			List(installedPackages, id: \.self, selection: $installedPackagesSelection) {
+			List(vm.installedPackages, id: \.self, selection: $vm.installedPackagesSelection) {
 				Text($0)
 			}
 			.onAppear {
-				self.installedPackages = LocalInstalls.getInstalledFormulae()
+				vm.installedPackages = LocalInstalls.getInstalledFormulae()
 			}
 		}
 	}
-	func loadData() async {
-		let urlString: String = "https://formulae.brew.sh/api/formula.json"
-		guard let url = URL(string: urlString) else {
-			print("Invalid url")
-			return
-		}
-		do {
-			let (data, _ ) = try await URLSession.shared.data(from: url)
-			if let json = try? JSONDecoder().decode([BrewPackage].self, from: data) {
-				self.databasePackages = json
-				self.filteredPackages = json
-			}
-		} catch {
-			print(error)
-		}
-	}
+
+}
+
+
+
+@Observable
+private class VM {
+	var databasePackagesSelection = Set<BrewPackage>()
+	var installedPackages: [String] = []
+	var installedPackagesSelection = Set<String>()
+	var output = ""
+	var errorOutput = ""
+	
 	@MainActor
-	func searching() {
-		if self.searchText == "" {
-			self.filteredPackages = self.databasePackages
-		} else {
-			filteredPackages = databasePackages.filter {
-				$0.name.contains(searchText)
-			}
-		}
-	}
 	func installPackages() {
 		guard databasePackagesSelection.count > 0 else {
 			return
@@ -98,10 +62,7 @@ struct MainScreen: View {
 			guard let results = String(data: data, encoding: .utf8) else {
 				return
 			}
-			self.output = results
+			output = results
 		}
 	}
 }
-
-
-
